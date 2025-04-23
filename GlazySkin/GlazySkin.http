@@ -1,0 +1,6 @@
+@GlazySkin_HostAddress = http://localhost:5210
+
+GET {{GlazySkin_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
