@@ -9,7 +9,7 @@
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Autherization\" />
-    <Folder Include="UseCases\CategoryUseCases\CreateCategoryUseCase\" />
+    <Folder Include="Exceptions\" />
     <Folder Include="UseCases\ProductUseCase\CreateProductUseCase\" />
     <Folder Include="UseCases\UserUseCase\CreateUserUseCase\" />
   </ItemGroup>
