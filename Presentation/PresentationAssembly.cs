@@ -1,7 +1,6 @@
 ﻿namespace Presentation
 {
-    public class Class1
+    internal class PresentationAssembly
     {
-
     }
 }

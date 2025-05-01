@@ -1,4 +1,7 @@
-﻿namespace GlazySkin.Extentions
+﻿using Repositories;
+using RepositoryContracts;
+
+namespace GlazySkin.Extentions
 {
     public static class ServiceExtentions
     {
@@ -9,6 +12,9 @@
                 builder.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
-            }); 
+            });
+
+        public static void RepositoryManagerConfigure(this IServiceCollection services) =>
+            services.AddScoped<IRepositoryManager, RepositoryManager>(); 
     }
 }

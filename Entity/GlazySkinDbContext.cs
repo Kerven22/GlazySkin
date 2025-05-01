@@ -24,7 +24,7 @@ namespace Entity
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("default")); 
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("default"), b=>b.MigrationsAssembly("GlazySkin")); 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -25,7 +25,7 @@ namespace GlazySkin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategory([FromBody] CategoryRequest category, CancellationToken cancellationToken)
         {
-
+            return Ok(); 
         }
     }
 }
