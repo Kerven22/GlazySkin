@@ -1,7 +1,6 @@
 ﻿namespace ServiceContracts
 {
-    public class Class1
+    public interface IProductService
     {
-
     }
 }

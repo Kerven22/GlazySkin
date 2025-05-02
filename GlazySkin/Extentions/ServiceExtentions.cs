@@ -1,5 +1,7 @@
 ﻿using Repositories;
 using RepositoryContracts;
+using ServiceContracts;
+using Servicies;
 
 namespace GlazySkin.Extentions
 {
@@ -15,6 +17,9 @@ namespace GlazySkin.Extentions
             });
 
         public static void RepositoryManagerConfigure(this IServiceCollection services) =>
-            services.AddScoped<IRepositoryManager, RepositoryManager>(); 
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
+
+        public static void ServiceManagerConfigure(this IServiceCollection service) =>
+            service.AddScoped<IServiceManager, ServiceManager>(); 
     }
 }

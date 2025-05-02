@@ -1,7 +1,15 @@
 using Entity;
 using GlazySkin.Extentions;
+using GlazySkin.Middleware;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddLogging(b => b.AddSerilog(new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("C:\\Users\\kerve\\Desktop\\New folder\\myLogger.txt")
+    .CreateLogger()));
 
 builder.Services.AddControllers();
 
@@ -17,7 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
