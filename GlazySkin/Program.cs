@@ -1,24 +1,31 @@
-using GlazySkin.Extenttions;
+using Entity;
+using GlazySkin.Extentions;
+using GlazySkin.Middleware;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddLogging(b => b.AddSerilog(new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("C:\\Users\\kerve\\Desktop\\New folder\\myLogger.txt")
+    .CreateLogger()));
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.ConfigureSqlServer(builder.Configuration); 
+builder.Services.CorsConfigure();
+builder.Services.AddDbContext<GlazySkinDbContext>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
