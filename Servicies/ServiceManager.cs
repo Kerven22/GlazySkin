@@ -1,4 +1,5 @@
-﻿using RepositoryContracts;
+﻿using Microsoft.Extensions.Logging;
+using RepositoryContracts;
 using ServiceContracts;
 
 namespace Servicies

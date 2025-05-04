@@ -20,6 +20,6 @@ namespace GlazySkin.Extentions
             services.AddScoped<IRepositoryManager, RepositoryManager>();
 
         public static void ServiceManagerConfigure(this IServiceCollection service) =>
-            service.AddScoped<IServiceManager, ServiceManager>(); 
+            service.AddScoped<IServiceManager, ServiceManager>();
     }
 }
