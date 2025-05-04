@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿  using Entity.Models;
+  using Shared;
 
-namespace RepositoryContracts
+  namespace RepositoryContracts
 {
     public interface ICategoryRepository
     {
+        IEnumerable<Category> GetAllCategories(bool trackChanges);
+
+        void CreateCategory(CategoryDto category); 
     }
 }
+

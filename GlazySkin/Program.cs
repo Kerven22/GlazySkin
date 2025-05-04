@@ -2,24 +2,29 @@ using Entity;
 using GlazySkin.Extentions;
 using GlazySkin.Middleware;
 using Serilog;
+using Serilog.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddLogging(b => b.AddSerilog(new LoggerConfiguration()
+/*builder.Services.AddLogging(b => b.AddSerilog(new LoggerConfiguration()
     .MinimumLevel.Debug()
     .WriteTo.Console()
     .WriteTo.File("C:\\Users\\kerve\\Desktop\\New folder\\myLogger.txt")
-    .CreateLogger()));
+    .CreateLogger()));*/
 
-builder.Services.AddControllers();
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger(); 
+
+builder.Services.AddControllers().AddApplicationPart(typeof(Presentation.PresentationAssembly).Assembly);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.CorsConfigure();
+builder.Services.RepositoryManagerConfigure();
+builder.Services.ServiceManagerConfigure(); 
 builder.Services.AddDbContext<GlazySkinDbContext>();
-
 var app = builder.Build();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
