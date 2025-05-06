@@ -7,7 +7,9 @@
     {
         IEnumerable<Category> GetAllCategories(bool trackChanges);
 
-        void CreateCategory(CategoryDto category); 
+        void CreateCategory(CategoryDto category);
+
+        CategoryDto GetCategoryById(Guid id, bool trackChanges);
     }
 }
 

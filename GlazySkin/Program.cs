@@ -2,7 +2,6 @@ using Entity;
 using GlazySkin.Extentions;
 using GlazySkin.Middleware;
 using Serilog;
-using Serilog.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +16,6 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger(); 
 
 builder.Services.AddControllers().AddApplicationPart(typeof(Presentation.PresentationAssembly).Assembly);
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.CorsConfigure();

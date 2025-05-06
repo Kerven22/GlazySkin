@@ -1,6 +1,5 @@
 ﻿using Entity;
 using Entity.Models;
-using Microsoft.Extensions.Logging;
 using RepositoryContracts;
 using Shared;
 
@@ -10,7 +9,6 @@ namespace Repositories
     {
         public CategoryRepository(GlazySkinDbContext glazySkinDbContext) : base(glazySkinDbContext) { }
 
-
         public IEnumerable<Category> GetAllCategories(bool trackChanges)
         {
             var categories = FindAll(trackChanges).OrderBy(c => c.Name).ToList(); 
@@ -19,13 +17,19 @@ namespace Repositories
 
         public void CreateCategory(CategoryDto categoryDto)
         {
-            var category = new Category()
+            var categoryEntity = new Category()
             {
                 CategoryId = categoryDto.Id,
                 Name = categoryDto.Name
             };
+            Create(categoryEntity);
+        }
 
-            Create(category); 
+        public CategoryDto GetCategoryById(Guid id, bool trackChanges)
+        {
+            var category = FindByCondition(c => c.CategoryId.Equals(id), trackChanges).SingleOrDefault();
+            var categoryDto = new CategoryDto(category.CategoryId, category.Name); 
+            return categoryDto; 
         }
     }
 }
