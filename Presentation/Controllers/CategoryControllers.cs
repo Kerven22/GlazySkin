@@ -22,10 +22,17 @@ public class CategoryControllers(IServiceManager _serviceManager):ControllerBase
 
     }
 
-    [HttpPost]
-    public IActionResult CrateCategory(string name)
+    [HttpGet("{id:guid}")]
+    public IActionResult GetCategoryByName(Guid id)
     {
-       var category =  _serviceManager.CategoryService.CreateCategory(name);
+        var category = _serviceManager.CategoryService.GetCategoryById(id, trackChanges: false);
+        return Ok(category); 
+    }
+
+    [HttpPost]
+    public IActionResult CrateCategory(Guid id, string name)
+    {
+       var category =  _serviceManager.CategoryService.CreateCategory(id, name);
        return Ok(category); 
     }
 }
