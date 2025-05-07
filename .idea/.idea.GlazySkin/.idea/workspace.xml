@@ -10,11 +10,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/GlazySkin/Mapper/MappingProfile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Presentation/Controllers/ProductController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicies/Exceptions/ErrorCode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicies/Exceptions/NotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicies/Exceptions/ProductNotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/ProductDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlazySkin/Middleware/ExceptionHandlerMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Middleware/ExceptionHandlerMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlazySkin/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/Controllers/CategoryControllers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/CategoryControllers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentation/Presentation.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Presentation.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/CategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/CategoryRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/ProductRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepositoryContracts/ICategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryContracts/ICategoryRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepositoryContracts/IProducRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryContracts/IProducRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServiceContracts/ICategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/ICategoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servicies/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/CategoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicies/Exceptions/CategoryNotFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/Exceptions/CategoryNotFoundException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicies/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicies/ServiceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ServiceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicies/Servicies.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/Servicies.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/CategoryDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/CategoryDto.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +46,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/975bf429da2a47c2b8081c008d18db0b40600/e9/fe24e797/IMapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/117275599da316d4e45c62326f3097e45f8b5b17d8fe17bbcf9ca86b0819b16/ResourceInvoker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e3173b4f82be9a07b4366bcbf46161cc43f2bd9e494df2d923810e3c48/ControllerActionInvoker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/918aa32966267955c2bcd6ecbee8af7ab7d84b7cb6cef6443c7b1cd33546d6e/AuthorizationMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -38,9 +63,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.GlazySkin: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.GlazySkin: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "dev",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -49,7 +75,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.GlazySkin: IIS Express">
+  <component name="RunManager" selected=".NET Launch Settings Profile.GlazySkin: https">
     <configuration name="GlazySkin: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/GlazySkin/GlazySkin.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -112,6 +138,7 @@
       <workItem from="1746117478895" duration="725000" />
       <workItem from="1746150744849" duration="916000" />
       <workItem from="1746592622178" duration="620000" />
+      <workItem from="1746619049198" duration="17136000" />
     </task>
     <servers />
   </component>

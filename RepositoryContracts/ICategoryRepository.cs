@@ -9,7 +9,7 @@
 
         void CreateCategory(CategoryDto category);
 
-        CategoryDto GetCategoryById(Guid id, bool trackChanges);
+        Category GetCategoryById(Guid id, bool trackChanges);
     }
 }
 

@@ -5,7 +5,7 @@ namespace ServiceContracts
 {
     public interface ICategoryService
     {
-        IEnumerable<Category> GetAllCategories(bool trackChanges);
+        IEnumerable<CategoryDto> GetAllCategories(bool trackChanges);
 
         CategoryDto CreateCategory(CategoryDto categoryDto);
 

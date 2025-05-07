@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using RepositoryContracts;
 using ServiceContracts;
 
@@ -12,12 +13,12 @@ namespace Servicies
         private readonly Lazy<IProductService> _productService;         
         private readonly Lazy<IBasketService> _basketService;
 
-        public ServiceManager(IRepositoryManager repositoryManager)
+        public ServiceManager(IRepositoryManager repositoryManager, IMapper _mapper)
         {
             _repositoryManager = repositoryManager;
-            _categoryService = new Lazy<ICategoryService>(() => new CategoryService(_repositoryManager));
+            _categoryService = new Lazy<ICategoryService>(() => new CategoryService(_repositoryManager, _mapper));
             _userService = new Lazy<IUserService>(() => new UserService(_repositoryManager));
-            _productService = new Lazy<IProductService>(() => new ProductService(_repositoryManager));
+            _productService = new Lazy<IProductService>(() => new ProductService(_repositoryManager, _mapper));
             _basketService = new Lazy<IBasketService>(() => new BasketService(_repositoryManager));
         }
 

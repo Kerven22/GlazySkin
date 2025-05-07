@@ -1,3 +1,7 @@
 namespace Shared;
 
-public record CategoryDto(Guid Id, string Name); 
+public record CategoryDto
+{
+    public Guid Id { get; init; }
+    public string Name { get; init; }
+}

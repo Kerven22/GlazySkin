@@ -4,13 +4,6 @@ using GlazySkin.Middleware;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
-
-/*builder.Services.AddLogging(b => b.AddSerilog(new LoggerConfiguration()
-    .MinimumLevel.Debug()
-    .WriteTo.Console()
-    .WriteTo.File("C:\\Users\\kerve\\Desktop\\New folder\\myLogger.txt")
-    .CreateLogger()));*/
-
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger(); 
@@ -22,6 +15,7 @@ builder.Services.CorsConfigure();
 builder.Services.RepositoryManagerConfigure();
 builder.Services.ServiceManagerConfigure(); 
 builder.Services.AddDbContext<GlazySkinDbContext>();
+builder.Services.AddAutoMapper(typeof(Program)); 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {

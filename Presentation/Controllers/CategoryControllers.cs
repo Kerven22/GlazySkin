@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ServiceContracts;
 using Shared;
 
@@ -23,7 +24,8 @@ public class CategoryControllers(IServiceManager _serviceManager):ControllerBase
     }
 
     [HttpGet("{id:guid}")]
-    public IActionResult GetCategoryByName(Guid id)
+    [ProducesResponseType(410)]
+    public IActionResult GetCategoryById(Guid id)
     {
         var category = _serviceManager.CategoryService.GetCategoryById(id, trackChanges: false);
         return Ok(category); 
@@ -32,7 +34,16 @@ public class CategoryControllers(IServiceManager _serviceManager):ControllerBase
     [HttpPost]
     public IActionResult CrateCategory([FromBody]CategoryDto categoryDto)
     {
-       var category =  _serviceManager.CategoryService.CreateCategory(categoryDto);
-       return Ok(category); 
+        try
+        {
+            var category =  _serviceManager.CategoryService.CreateCategory(categoryDto);
+            return Ok(category); 
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
     }
 }

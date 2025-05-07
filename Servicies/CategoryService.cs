@@ -1,4 +1,4 @@
-﻿using Entity.Models;
+﻿using AutoMapper;
 using RepositoryContracts;
 using Serilog;
 using ServiceContracts;
@@ -7,27 +7,19 @@ using Shared;
 
 namespace Servicies
 {
-    public sealed class CategoryService(IRepositoryManager _repositoryManager):ICategoryService
+    public sealed class CategoryService(IRepositoryManager _repositoryManager, IMapper _mapper):ICategoryService
     {
-        public IEnumerable<Category> GetAllCategories(bool trackChanges)
+        public IEnumerable<CategoryDto> GetAllCategories(bool trackChanges)
         {
-            try
-            {
                 var categories = _repositoryManager.CategoryRepository.GetAllCategories(trackChanges);
-                return categories;
-
-            }
-            catch (Exception e)
-            {
-                Log.Error("Exception Message {e}",e);
-                throw;
-            }
+                var categoriesDto = _mapper.Map<IEnumerable<CategoryDto>>(categories);
+                return categoriesDto; 
         }
 
         public CategoryDto CreateCategory(CategoryDto categoryDto)
         {
             var categoryExists = _repositoryManager.CategoryRepository.GetCategoryById(categoryDto.Id, trackChanges: false);
-            if (!(categoryExists is null))
+            if (categoryExists != null)
                 throw new CategoryExistException(categoryDto.Id); 
             
             _repositoryManager.CategoryRepository.CreateCategory((categoryDto));
@@ -37,9 +29,11 @@ namespace Servicies
 
         public CategoryDto GetCategoryById(Guid id, bool trackChanges)
         {
-            var categoryDto = _repositoryManager.CategoryRepository.GetCategoryById(id, trackChanges);
-            if(categoryDto is null)
-                return null;
+            var category = _repositoryManager.CategoryRepository.GetCategoryById(id, trackChanges);
+            if (category is null)
+                throw new CategoryNotFoundException(id);
+
+            var categoryDto = _mapper.Map<CategoryDto>(category);
             return categoryDto; 
         }
     }

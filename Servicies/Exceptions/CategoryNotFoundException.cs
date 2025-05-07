@@ -1,6 +1,6 @@
 namespace Servicies.Exceptions;
 
-public class CategoryNotFoundException:Exception
+public sealed class CategoryNotFoundException:NotFoundException
 {
-    public CategoryNotFoundException(string name):base($"Category with name: {name} was not found"){}
+    public CategoryNotFoundException(Guid id):base(ErrorCode.Gone, $"Category with Id: {id} was not found"){}
 }

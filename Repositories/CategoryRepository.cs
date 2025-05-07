@@ -25,11 +25,10 @@ namespace Repositories
             Create(categoryEntity);
         }
 
-        public CategoryDto GetCategoryById(Guid id, bool trackChanges)
+        public Category GetCategoryById(Guid id, bool trackChanges)
         {
             var category = FindByCondition(c => c.CategoryId.Equals(id), trackChanges).SingleOrDefault();
-            var categoryDto = new CategoryDto(category.CategoryId, category.Name); 
-            return categoryDto; 
+            return category; 
         }
     }
 }
