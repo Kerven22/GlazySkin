@@ -30,9 +30,9 @@ public class CategoryControllers(IServiceManager _serviceManager):ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CrateCategory(Guid id, string name)
+    public IActionResult CrateCategory([FromBody]CategoryDto categoryDto)
     {
-       var category =  _serviceManager.CategoryService.CreateCategory(id, name);
+       var category =  _serviceManager.CategoryService.CreateCategory(categoryDto);
        return Ok(category); 
     }
 }

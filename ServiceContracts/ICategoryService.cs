@@ -7,7 +7,7 @@ namespace ServiceContracts
     {
         IEnumerable<Category> GetAllCategories(bool trackChanges);
 
-        CategoryDto CreateCategory(Guid id, string name);
+        CategoryDto CreateCategory(CategoryDto categoryDto);
 
         CategoryDto GetCategoryById(Guid id, bool trackChanges); 
     }

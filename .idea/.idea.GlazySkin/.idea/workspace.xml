@@ -9,11 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="" />
+    <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentation/Controllers/CategoryControllers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/CategoryControllers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServiceContracts/ICategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/ICategoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicies/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/CategoryService.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,19 +35,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.GlazySkin: IIS Express.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.GlazySkin: IIS Express">
     <configuration name="GlazySkin: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/GlazySkin/GlazySkin.csproj" />
@@ -85,6 +95,11 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.GlazySkin: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.GlazySkin: http" />
+      <item itemvalue=".NET Launch Settings Profile.GlazySkin: https" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -96,6 +111,7 @@
       <updated>1746117475812</updated>
       <workItem from="1746117478895" duration="725000" />
       <workItem from="1746150744849" duration="916000" />
+      <workItem from="1746592622178" duration="620000" />
     </task>
     <servers />
   </component>

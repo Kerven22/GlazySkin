@@ -24,13 +24,12 @@ namespace Servicies
             }
         }
 
-        public CategoryDto CreateCategory(Guid id, string name)
+        public CategoryDto CreateCategory(CategoryDto categoryDto)
         {
-            var categoryExists = _repositoryManager.CategoryRepository.GetCategoryById(id, trackChanges: false);
+            var categoryExists = _repositoryManager.CategoryRepository.GetCategoryById(categoryDto.Id, trackChanges: false);
             if (!(categoryExists is null))
-                throw new CategoryExistException(id); 
+                throw new CategoryExistException(categoryDto.Id); 
             
-            var categoryDto = new CategoryDto(id, name); 
             _repositoryManager.CategoryRepository.CreateCategory((categoryDto));
             _repositoryManager.SaveAsync(); 
             return categoryDto; 

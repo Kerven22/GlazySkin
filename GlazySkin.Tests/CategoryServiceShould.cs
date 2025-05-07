@@ -28,7 +28,7 @@ namespace GlazySkin.Tests
             var categoryId = Guid.Parse("8e13141f-4786-454f-89f5-06f855d58d3b");
             var expected = new CategoryDto(categoryId, "Hello");
             categorySetup.Returns(expected); 
-            var actual = sut.Invoking(s => s.CreateCategory(Guid.Parse(""), "Hello")); 
+            var actual = sut.Invoking(s => s.CreateCategory(new CategoryDto( Guid.Parse(""), "Hello"))); 
             actual.Should().Throw<CategoryExistException>(); 
 
         }
