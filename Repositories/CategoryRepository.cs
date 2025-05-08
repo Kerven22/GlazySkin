@@ -15,20 +15,22 @@ namespace Repositories
             return categories;
         }
 
-        public void CreateCategory(CategoryDto categoryDto)
-        {
-            var categoryEntity = new Category()
-            {
-                CategoryId = categoryDto.Id,
-                Name = categoryDto.Name
-            };
-            Create(categoryEntity);
-        }
+        public void CreateCategory(Category category) => Create(category); 
+
 
         public Category GetCategoryById(Guid id, bool trackChanges)
         {
             var category = FindByCondition(c => c.CategoryId.Equals(id), trackChanges).SingleOrDefault();
             return category; 
+        }
+
+        public bool CheckByNameCategoryExists(string name, bool trackChanges)
+        {
+            var category = FindByCondition(c => c.Name.Equals(name), trackChanges);
+
+            if (category is null)
+                return true;
+            return false;
         }
     }
 }

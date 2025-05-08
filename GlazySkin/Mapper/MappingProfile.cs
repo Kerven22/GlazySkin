@@ -14,5 +14,8 @@ public class MappingProfile:Profile
 
         CreateMap<Product, ProductDto>();
 
+        CreateMap<CategoryForCreationDto, Category>(); 
+        
+
     }
 }

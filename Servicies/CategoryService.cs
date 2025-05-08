@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Entity.Models;
 using RepositoryContracts;
 using Serilog;
 using ServiceContracts;
@@ -16,14 +17,19 @@ namespace Servicies
                 return categoriesDto; 
         }
 
-        public CategoryDto CreateCategory(CategoryDto categoryDto)
+        public CategoryDto CreateCategory(CategoryForCreationDto category)
         {
-            var categoryExists = _repositoryManager.CategoryRepository.GetCategoryById(categoryDto.Id, trackChanges: false);
-            if (categoryExists != null)
-                throw new CategoryExistException(categoryDto.Id); 
+            var categoryExists = _repositoryManager.CategoryRepository.CheckByNameCategoryExists(category.name,trackChanges:false);
+            if (categoryExists)
+                throw new CategoryExistException(category.name);
             
-            _repositoryManager.CategoryRepository.CreateCategory((categoryDto));
-            _repositoryManager.SaveAsync(); 
+            var categoryEntity = _mapper.Map<Category>(category); 
+            
+            _repositoryManager.CategoryRepository.CreateCategory(categoryEntity);
+            _repositoryManager.SaveAsync();
+
+            var categoryDto = _mapper.Map<CategoryDto>(categoryEntity);
+            
             return categoryDto; 
         }
 

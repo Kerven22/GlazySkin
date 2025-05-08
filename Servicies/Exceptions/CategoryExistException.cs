@@ -2,5 +2,5 @@ namespace Servicies.Exceptions;
 
 public class CategoryExistException:Exception
 {
-    public CategoryExistException(Guid id):base($"Category with name:{id} exists in database"){}
+    public CategoryExistException(string  name):base($"Category with name:{name} exists in database"){}
 }

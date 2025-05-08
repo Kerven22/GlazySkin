@@ -10,30 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GlazySkin/Mapper/MappingProfile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Presentation/Controllers/ProductController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicies/Exceptions/ErrorCode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicies/Exceptions/NotFoundException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicies/Exceptions/ProductNotFoundException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/ProductDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/CategoryForCreationDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlazySkin/Middleware/ExceptionHandlerMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Middleware/ExceptionHandlerMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlazySkin/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentation/Controllers/CategoryControllers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/CategoryControllers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentation/Presentation.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Presentation.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlazySkin/Mapper/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Mapper/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentation/Controllers/CategoryControllers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/CategoryController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repositories/CategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/CategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/ProductRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RepositoryContracts/ICategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryContracts/ICategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepositoryContracts/IProducRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryContracts/IProducRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServiceContracts/ICategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/ICategoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servicies/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/CategoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicies/Exceptions/CategoryNotFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/Exceptions/CategoryNotFoundException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicies/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicies/ServiceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ServiceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicies/Servicies.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/Servicies.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/CategoryDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/CategoryDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicies/Exceptions/CategoryExistException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/Exceptions/CategoryExistException.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,21 +45,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.GlazySkin: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.GlazySkin: https.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.GlazySkin: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.GlazySkin: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.GlazySkin: https">
     <configuration name="GlazySkin: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/GlazySkin/GlazySkin.csproj" />
@@ -139,6 +124,7 @@
       <workItem from="1746150744849" duration="916000" />
       <workItem from="1746592622178" duration="620000" />
       <workItem from="1746619049198" duration="17136000" />
+      <workItem from="1746677944232" duration="2024000" />
     </task>
     <servers />
   </component>
