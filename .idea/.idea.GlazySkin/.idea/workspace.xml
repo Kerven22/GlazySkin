@@ -12,8 +12,23 @@
     <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/Shared/ProductForCreationDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Models/Basket.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Models/Category.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Models/Product.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Models/User.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/UseCases/CategoryUseCases/CreateCategoryUseCase/CreateCategoryCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/UseCases/CategoryUseCases/CreateCategoryUseCase/CreateCategoryUseCase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/UseCases/CategoryUseCases/CreateCategoryUseCase/ICreateCategoryStorage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/UseCases/CategoryUseCases/CreateCategoryUseCase/ICreateCategoryUseCase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/UseCases/CategoryUseCases/GetCategoryUseCase/GetCategoryUseCase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/UseCases/CategoryUseCases/GetCategoryUseCase/IGetCategoryStorage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/UseCases/CategoryUseCases/GetCategoryUseCase/IGetCategoryUseCase.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlazySkin/Mapper/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Mapper/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logging/ILoggerManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logging/LoggerManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logging/Logging.csproj" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/CategoryController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/ProductController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repositories/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/ProductRepository.cs" afterDir="false" />
@@ -38,6 +53,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/117275599da316d4e45c62326f3097e45f8b5b17d8fe17bbcf9ca86b0819b16/ResourceInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e3173b4f82be9a07b4366bcbf46161cc43f2bd9e494df2d923810e3c48/ControllerActionInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/918aa32966267955c2bcd6ecbee8af7ab7d84b7cb6cef6443c7b1cd33546d6e/AuthorizationMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kerve/Documents/_Zakazy/Islam/Backend/GlazySkin/GlazySkin.Tests/CategoryServiceShould.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -128,7 +144,7 @@
       <workItem from="1746619049198" duration="17136000" />
       <workItem from="1746677944232" duration="2261000" />
       <workItem from="1746718420395" duration="7472000" />
-      <workItem from="1746807888078" duration="5019000" />
+      <workItem from="1746807888078" duration="5372000" />
     </task>
     <servers />
   </component>
