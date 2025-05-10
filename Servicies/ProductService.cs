@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Entity.Models;
 using RepositoryContracts;
 using ServiceContracts;
 using Servicies.Exceptions;
@@ -32,6 +33,21 @@ namespace Servicies
 
             if (productEntity is null)
                 throw new ProductNotFoundException(productId);
+            var productDto = _mapper.Map<ProductDto>(productEntity);
+            return productDto; 
+        }
+
+        public ProductDto CreateProduct(Guid categoryId, ProductForCreationDto product)
+        {
+            CategoryIsintExists(categoryId);
+
+            var productEntity = _mapper.Map<Product>(product);
+            
+            productEntity.ProductId = Guid.NewGuid();
+            
+            _repositoryManager.ProducRepository.CreateProduct(categoryId, productEntity);
+            _repositoryManager.SaveAsync();
+
             var productDto = _mapper.Map<ProductDto>(productEntity);
             return productDto; 
         }

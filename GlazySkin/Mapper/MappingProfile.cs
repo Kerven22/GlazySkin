@@ -12,10 +12,15 @@ public class MappingProfile:Profile
             .ForMember(d => d.Id, m => m.MapFrom(c => c.CategoryId))
             .ForMember(d => d.Name, m => m.MapFrom(c => c.Name));
 
-        CreateMap<Product, ProductDto>();
-
-        CreateMap<CategoryForCreationDto, Category>(); 
+        CreateMap<CategoryForCreationDto, Category>()
+            .ForMember(d=>d.Products, opt=>opt.MapFrom(s=>s.products)); 
         
+        CreateMap<Product, ProductDto>()
+            .ForMember(d=>d.Id, opt=>opt.MapFrom(s=>s.ProductId));
+
+        CreateMap<ProductForCreationDto, Product>(); 
+
+
 
     }
 }

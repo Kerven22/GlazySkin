@@ -18,7 +18,6 @@ public class CategoryController(IServiceManager _serviceManager):ControllerBase
 
     [HttpGet("{id:guid}", Name = "CategoryById")]
     [ProducesResponseType(410)]
-    
     public IActionResult GetCategoryById(Guid id)
     {
         var category = _serviceManager.CategoryService.GetCategoryById(id, trackChanges: false);

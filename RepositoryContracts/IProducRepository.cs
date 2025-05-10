@@ -1,4 +1,5 @@
 ﻿using Entity.Models;
+using Shared;
 
 namespace RepositoryContracts
 {
@@ -7,5 +8,7 @@ namespace RepositoryContracts
         IEnumerable<Product> GetProducts(Guid categoryId, bool trackChanges);
 
         Product GetProduct(Guid categoryId, Guid productId, bool trackChanges);
+
+        void CreateProduct(Guid categoryId, Product product); 
     }
 }

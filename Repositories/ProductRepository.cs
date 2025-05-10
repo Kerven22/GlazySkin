@@ -1,6 +1,7 @@
 ﻿using Entity;
 using Entity.Models;
 using RepositoryContracts;
+using Shared;
 
 namespace Repositories
 {
@@ -15,5 +16,11 @@ namespace Repositories
         public Product GetProduct(Guid categoryId, Guid productid, bool trackChanges) =>
             FindByCondition(p => p.CategoryId.Equals(categoryId) && p.ProductId.Equals(productid), trackChanges)
                 .SingleOrDefault();
+
+        public void CreateProduct(Guid categoryId, Product product)
+        {
+            product.CategoryId = categoryId;
+            Create(product); 
+        }
     }
 }
