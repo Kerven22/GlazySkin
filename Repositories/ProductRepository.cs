@@ -22,5 +22,7 @@ namespace Repositories
             product.CategoryId = categoryId;
             Create(product); 
         }
+
+        public void DeleteProduct(Product product) => Delete(product); 
     }
 }

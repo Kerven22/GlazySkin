@@ -32,5 +32,11 @@ namespace Repositories
                 return true;
             return false;
         }
+
+
+        public IEnumerable<Category> GetCategoryByIds(IEnumerable<Guid> ids, bool trackChanges)=>
+            FindByCondition(c => ids.Contains(c.CategoryId), trackChanges).ToList();
+
+        public void DeleteCategory(Category category) => Delete(category); 
     }
 }

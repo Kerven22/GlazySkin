@@ -51,5 +51,16 @@ namespace Servicies
             var productDto = _mapper.Map<ProductDto>(productEntity);
             return productDto; 
         }
+
+        public void DeleteProduct(Guid categoryId, Guid productId, bool trackChanges)
+        {
+            CategoryIsintExists(categoryId);
+
+            var product = _repositoryManager.ProducRepository.GetProduct(categoryId, productId, trackChanges);
+            if (product is null)
+                throw new ProductNotFoundException(productId); 
+            _repositoryManager.ProducRepository.DeleteProduct(product);
+            _repositoryManager.SaveAsync();
+        }
     }
 }

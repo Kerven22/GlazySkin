@@ -11,5 +11,7 @@ namespace ServiceContracts
 
         ProductDto CreateProduct(Guid categoryId, ProductForCreationDto product);
 
+        void DeleteProduct(Guid categoryId, Guid productId, bool trackChanges); 
+
     }
 }

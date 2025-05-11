@@ -1,3 +1,3 @@
 namespace Shared;
 
-public record CategoryForCreationDto(string name, IEnumerable<ProductForCreationDto> products); 
+public record CategoryForCreationDto(string name, IEnumerable<ProductForCreationDto>? products); 

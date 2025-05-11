@@ -30,4 +30,11 @@ public class ProductController(IServiceManager _serviceManager):ControllerBase
 
         return CreatedAtRoute("GetProduct", new { categoryId=categoryId, productId = productDto.Id }, productDto); 
     }
+
+    [HttpDelete]
+    public IActionResult DeleteProduct(Guid categoryId, Guid productId)
+    {
+        _serviceManager.ProductService.DeleteProduct(categoryId, productId, trackChanges:false);
+        return NoContent(); 
+    }
 }

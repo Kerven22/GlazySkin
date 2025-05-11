@@ -9,7 +9,14 @@ namespace ServiceContracts
 
         CategoryDto CreateCategory(CategoryForCreationDto categoryDto);
 
-        CategoryDto GetCategoryById(Guid id, bool trackChanges); 
+        CategoryDto GetCategoryById(Guid id, bool trackChanges);
+
+        IEnumerable<CategoryDto> GetCategoriesByIds(IEnumerable<Guid> ids, bool trackChanges);
+
+        (IEnumerable<CategoryDto> categories, string ids) CreateCategoriesCollection(
+            IEnumerable<CategoryForCreationDto> categoryForCreationDtosCollection);
+
+        void DeleteCategory(Guid categoryId, bool trackChanges);
     }
     
 }

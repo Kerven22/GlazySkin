@@ -9,6 +9,8 @@ namespace RepositoryContracts
 
         Product GetProduct(Guid categoryId, Guid productId, bool trackChanges);
 
-        void CreateProduct(Guid categoryId, Product product); 
+        void CreateProduct(Guid categoryId, Product product);
+
+        void DeleteProduct(Product product); 
     }
 }
