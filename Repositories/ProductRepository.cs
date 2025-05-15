@@ -1,5 +1,6 @@
 ﻿using Entity;
 using Entity.Models;
+using Microsoft.EntityFrameworkCore;
 using RepositoryContracts;
 using Shared;
 
@@ -9,13 +10,13 @@ namespace Repositories
     {
         public ProductRepository(GlazySkinDbContext glazySkinDbContext) : base(glazySkinDbContext) { }
 
-        public IEnumerable<Product> GetProducts(Guid categoryId, bool trackChanges) =>
-            FindByCondition(p => p.CategoryId.Equals(categoryId), trackChanges)
-                .OrderBy(p => p.Name).ToList();
+        public async Task<IEnumerable<Product>> GetProductsAsync(Guid categoryId, bool trackChanges) =>
+            await FindByCondition(p => p.CategoryId.Equals(categoryId), trackChanges)
+                .OrderBy(p => p.Name).ToListAsync();
 
-        public Product GetProduct(Guid categoryId, Guid productid, bool trackChanges) =>
-            FindByCondition(p => p.CategoryId.Equals(categoryId) && p.ProductId.Equals(productid), trackChanges)
-                .SingleOrDefault();
+        public async Task<Product> GetProductAsync(Guid categoryId, Guid productId, bool trackChanges) =>
+            await FindByCondition(p => p.CategoryId.Equals(categoryId) && p.ProductId.Equals(productId), trackChanges)
+                .SingleOrDefaultAsync();
 
         public void CreateProduct(Guid categoryId, Product product)
         {

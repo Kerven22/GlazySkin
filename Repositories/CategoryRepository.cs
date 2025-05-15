@@ -1,5 +1,6 @@
 ﻿using Entity;
 using Entity.Models;
+using Microsoft.EntityFrameworkCore;
 using RepositoryContracts;
 using Shared;
 
@@ -9,18 +10,18 @@ namespace Repositories
     {
         public CategoryRepository(GlazySkinDbContext glazySkinDbContext) : base(glazySkinDbContext) { }
 
-        public IEnumerable<Category> GetAllCategories(bool trackChanges)
+        public async Task<IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges)
         {
-            var categories = FindAll(trackChanges).OrderBy(c => c.Name).ToList(); 
+            var categories = await FindAll(trackChanges).OrderBy(c => c.Name).ToListAsync(); 
             return categories;
         }
 
         public void CreateCategory(Category category) => Create(category); 
 
 
-        public Category GetCategoryById(Guid id, bool trackChanges)
+        public async Task<Category> GetCategoryByIdAsync(Guid id, bool trackChanges)
         {
-            var category = FindByCondition(c => c.CategoryId.Equals(id), trackChanges).SingleOrDefault();
+            var category = await FindByCondition(c => c.CategoryId.Equals(id), trackChanges).SingleOrDefaultAsync();
             return category; 
         }
 
@@ -34,8 +35,8 @@ namespace Repositories
         }
 
 
-        public IEnumerable<Category> GetCategoryByIds(IEnumerable<Guid> ids, bool trackChanges)=>
-            FindByCondition(c => ids.Contains(c.CategoryId), trackChanges).ToList();
+        public async Task<IEnumerable<Category>> GetCategoryByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)=>
+            await FindByCondition(c => ids.Contains(c.CategoryId), trackChanges).ToListAsync();
 
         public void DeleteCategory(Category category) => Delete(category); 
     }

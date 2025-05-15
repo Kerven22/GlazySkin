@@ -5,13 +5,23 @@ namespace ServiceContracts
 {
     public interface IProductService
     {
-        IEnumerable<ProductDto> GetProducts(Guid categoryId, bool trackChanges);
+        Task<IEnumerable<ProductDto>> GetProductsAsync(Guid categoryId, bool trackChanges);
 
-        ProductDto GetProduct(Guid categoryId, Guid productId, bool trackChanges);
+        
+        Task<ProductDto> GetProductAsync(Guid categoryId, Guid productId, bool trackChanges);
 
-        ProductDto CreateProduct(Guid categoryId, ProductForCreationDto product);
+        Task<ProductDto> CreateProductAsync(Guid categoryId, ProductForCreationDto product);
 
-        void DeleteProduct(Guid categoryId, Guid productId, bool trackChanges); 
+        Task DeleteProductAsync(Guid categoryId, Guid productId, bool trackChanges);
+
+        Task ProductUpdateAsync(Guid categoryId, Guid productId, ProductForUpdateDto productForUpdateDto,
+            bool catTrackChanges, bool productTrackChanges);
+
+
+        Task<(ProductForUpdateDto productForUpdateDto, Product product)> GetProductForPatchAsync(Guid categoryId, Guid productId,
+            bool categoryTrachChanges, bool productTrackChanges);
+
+        Task SaveChangesForPatchAsync(ProductForUpdateDto productForUpdateDto, Product product); 
 
     }
 }

@@ -1,3 +1,4 @@
+using GlazySkin.ActionFilter;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Presentation.ModelBinders;
@@ -10,50 +11,61 @@ namespace Presentation.Controllers;
 public class CategoryController(IServiceManager _serviceManager):ControllerBase
 {
     [HttpGet]
-    public IActionResult GetCategories()
+    public async Task<IActionResult> GetCategories()
     {
-            var categories = _serviceManager.CategoryService.GetAllCategories(trackChanges: false);
+            var categories =  await _serviceManager.CategoryService.GetAllCategoriesAsync(trackChanges: false);
             return Ok(categories);
 
     }
 
     [HttpGet("{id:guid}", Name = "CategoryById")]
     [ProducesResponseType(410)]
-    public IActionResult GetCategoryById(Guid id)
+    public async Task<IActionResult> GetCategoryById(Guid id)
     {
-        var category = _serviceManager.CategoryService.GetCategoryById(id, trackChanges: false);
+        var category = await _serviceManager.CategoryService.GetCategoryByIdAsync(id, trackChanges: false);
         return Ok(category); 
     }
 
     [HttpPost]
-    public IActionResult CrateCategory([FromBody]CategoryForCreationDto categoryDto)
+    [ServiceFilter(typeof(ValidationFilterAttrebute))]
+    public async Task<IActionResult> CrateCategory([FromBody]CategoryForCreationDto categoryDto)
     {
         if (categoryDto is null)
             return BadRequest("CategoryForCreationDto object is null");
-        var category =  _serviceManager.CategoryService.CreateCategory(categoryDto);
+        var category =  await _serviceManager.CategoryService.CreateCategoryAsync(categoryDto);
         return CreatedAtRoute("CategoryById", new { id = category.Id }, category); 
 
     }
 
     [HttpGet("collection/({ids})", Name="CategoryCollection")]
-    public IActionResult GetCategoriesByIds([ModelBinder(BinderType = typeof(ArrayModelBinder))]IEnumerable<Guid> ids)
+    public async Task<IActionResult> GetCategoriesByIds([ModelBinder(BinderType = typeof(ArrayModelBinder))]IEnumerable<Guid> ids)
     {
-       var categories =  _serviceManager.CategoryService.GetCategoriesByIds(ids, trackChanges: false);
+       var categories =  await _serviceManager.CategoryService.GetCategoriesByIdsAsync(ids, trackChanges: false);
        return Ok(categories);
     }
 
     [HttpPost("collection")]
-    public IActionResult CreateCategoryCollection(
+    [ServiceFilter(typeof(ValidationFilterAttrebute))]
+    public async Task<IActionResult> CreateCategoryCollectionAsync(
         [FromBody] IEnumerable<CategoryForCreationDto> categoryForCreationDtos)
     {
-        var result = _serviceManager.CategoryService.CreateCategoriesCollection(categoryForCreationDtos);
+        var result = await _serviceManager.CategoryService.CreateCategoriesCollectionAsync(categoryForCreationDtos);
         return CreatedAtRoute("CategoryCollection", new { result.ids }, result.categories); 
     }
 
     [HttpDelete("{categoryId:guid}")]
-    public IActionResult DeleteCategory(Guid categoryId)
+    public async Task<IActionResult> DeleteCategoryAsync(Guid categoryId)
     {
-        _serviceManager.CategoryService.DeleteCategory(categoryId, trackChanges:false);
+        await _serviceManager.CategoryService.DeleteCategoryAsync(categoryId, trackChanges:false);
+        return NoContent(); 
+    }
+
+    [HttpPut("{categoryId:guid}")]
+    public async Task<IActionResult> CategoryUpdate(Guid categoryId, [FromBody] CategoryForUpdate categoryForUpdate)
+    {
+        if (categoryForUpdate is null)
+            return BadRequest("Category for update object not be null"); 
+        await _serviceManager.CategoryService.UpdateCategoryAsync(categoryId, categoryForUpdate, trackChanges:true);
         return NoContent(); 
     }
 }

@@ -13,12 +13,15 @@ public class MappingProfile:Profile
             .ForMember(d => d.Name, m => m.MapFrom(c => c.Name));
 
         CreateMap<CategoryForCreationDto, Category>()
-            .ForMember(d=>d.Products, opt=>opt.MapFrom(s=>s.products)); 
+            .ForMember(d=>d.Products, opt=>opt.MapFrom(s=>s.Products)); 
         
         CreateMap<Product, ProductDto>()
             .ForMember(d=>d.Id, opt=>opt.MapFrom(s=>s.ProductId));
 
-        CreateMap<ProductForCreationDto, Product>(); 
+        CreateMap<ProductForCreationDto, Product>();
+
+        CreateMap<ProductForUpdateDto, Product>().ReverseMap();
+        CreateMap<CategoryForUpdate, Category>(); 
 
 
 

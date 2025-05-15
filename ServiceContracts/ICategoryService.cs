@@ -5,18 +5,21 @@ namespace ServiceContracts
 {
     public interface ICategoryService
     {
-        IEnumerable<CategoryDto> GetAllCategories(bool trackChanges);
+        
+        Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync(bool trackChanges);
 
-        CategoryDto CreateCategory(CategoryForCreationDto categoryDto);
+        Task<CategoryDto> CreateCategoryAsync(CategoryForCreationDto categoryDto);
 
-        CategoryDto GetCategoryById(Guid id, bool trackChanges);
+        Task<CategoryDto> GetCategoryByIdAsync(Guid id, bool trackChanges);
 
-        IEnumerable<CategoryDto> GetCategoriesByIds(IEnumerable<Guid> ids, bool trackChanges);
+        Task<IEnumerable<CategoryDto>> GetCategoriesByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
 
-        (IEnumerable<CategoryDto> categories, string ids) CreateCategoriesCollection(
+        Task<(IEnumerable<CategoryDto> categories, string ids)> CreateCategoriesCollectionAsync(
             IEnumerable<CategoryForCreationDto> categoryForCreationDtosCollection);
 
-        void DeleteCategory(Guid categoryId, bool trackChanges);
+        Task DeleteCategoryAsync(Guid categoryId, bool trackChanges);
+
+        Task UpdateCategoryAsync(Guid categoryId, CategoryForUpdate categoryForUpdate, bool trackChanges); 
     }
     
 }

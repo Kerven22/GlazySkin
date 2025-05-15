@@ -29,9 +29,9 @@ namespace GlazySkin.Tests
         public void ThrowCategoryExistException_WhenCategoryExistInDatabase()
         {
             categorySetup.Returns(true); 
-            var actual = sut.Invoking(s => s.CreateCategory(new CategoryForCreationDto("Hello", 
-                new [] {new ProductForCreationDto(name:"skin", 24, "veryGood", 12)}))); 
-            actual.Should().Throw<CategoryExistException>(); 
+            var actual = sut.Invoking(s => s.CreateCategoryAsync(new CategoryForCreationDto(){ Name = "Hello", 
+                new [] { new ProductForCreationDto(){Name ="skin", Cost=24, Review="veryGood", Quantity =  12}}})); 
+            actual.Should().ThrowAsync<CategoryExistException>(); 
 
         }
 
@@ -39,8 +39,8 @@ namespace GlazySkin.Tests
         public void ThrowNotCategoryException_WhenCategoryIsntExist()
         {
             var categoryId = Guid.Parse("de1c89ba-34e2-4599-a8f0-3092c03cdb20"); 
-            var actual = sut.Invoking(s => s.GetCategoryById(categoryId, false)); 
-            actual.Should().Throw<CategoryNotFoundException>(); 
+            var actual = sut.Invoking(s => s.GetCategoryByIdAsync(categoryId, false)); 
+            actual.Should().ThrowAsync<CategoryNotFoundException>(); 
         }
     }
 }

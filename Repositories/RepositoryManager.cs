@@ -28,6 +28,6 @@ namespace Repositories
 
         public IBasketRepository BasketRepository => _basketRepository.Value;
 
-        public Task SaveAsync() => _dbContext.SaveChangesAsync();
+        public async Task SaveAsync() => await _dbContext.SaveChangesAsync();
     }
 }
