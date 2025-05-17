@@ -30,7 +30,7 @@ namespace GlazySkin.Tests
         {
             categorySetup.Returns(true); 
             var actual = sut.Invoking(s => s.CreateCategoryAsync(new CategoryForCreationDto(){ Name = "Hello", 
-                new [] { new ProductForCreationDto(){Name ="skin", Cost=24, Review="veryGood", Quantity =  12}}})); 
+                new [] { new ProductForCreationDto(){Name ="skin", Cost=24, Review="VeryGood", Quantity =  12}}})); 
             actual.Should().ThrowAsync<CategoryExistException>(); 
 
         }

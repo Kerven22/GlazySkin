@@ -4,29 +4,30 @@ using RepositoryContracts;
 using ServiceContracts;
 using Servicies.Exceptions;
 using Shared;
+using Shared.RequestFeatures;
 
 namespace Servicies
 {
     internal sealed class ProductService(IRepositoryManager _repositoryManager, IMapper _mapper):IProductService
     {
-        private async Task CategoryIsintExistsAsync(Guid categoryId)
+        private async Task CheckIfCategoryExistsAsync(Guid categoryId)
         {
             var category = await _repositoryManager.CategoryRepository.GetCategoryByIdAsync(categoryId, trackChanges:false);
             if (category is null)
                 throw new CategoryNotFoundException(categoryId); 
         }
-        public async Task<IEnumerable<ProductDto>> GetProductsAsync(Guid categoryId, bool trackChanges)
+        public async Task<(IEnumerable<ProductDto> productDtos, MetaData metaData)> GetProductsAsync(Guid categoryId,ProductParameters productParameters, bool trackChanges)
         {
-            await CategoryIsintExistsAsync(categoryId); 
-            var productsEntity =await _repositoryManager.ProducRepository.GetProductsAsync(categoryId, trackChanges);
-            var productsDto = _mapper.Map<IEnumerable<ProductDto>>(productsEntity);
-
-            return productsDto; 
+            await CheckIfCategoryExistsAsync(categoryId);
+            var produtcWithMetaData =
+                await _repositoryManager.ProducRepository.GetProductsAsync(categoryId, productParameters, trackChanges);
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(produtcWithMetaData);
+            return (productDtos: productDto, metaData: produtcWithMetaData.MetaData); 
         }
 
         public async Task<ProductDto> GetProductAsync(Guid categoryId, Guid productId, bool trackChanges)
         {
-            await CategoryIsintExistsAsync(categoryId);
+            await CheckIfCategoryExistsAsync(categoryId);
             var productEntity = await _repositoryManager.ProducRepository.GetProductAsync(categoryId, productId, trackChanges);
 
             if (productEntity is null)
@@ -37,7 +38,7 @@ namespace Servicies
 
         public async Task<ProductDto> CreateProductAsync(Guid categoryId, ProductForCreationDto product)
         {
-            await CategoryIsintExistsAsync(categoryId);
+            await CheckIfCategoryExistsAsync(categoryId);
 
             var productEntity = _mapper.Map<Product>(product);
             
@@ -52,7 +53,7 @@ namespace Servicies
 
         public async Task DeleteProductAsync(Guid categoryId, Guid productId, bool trackChanges)
         {
-            await CategoryIsintExistsAsync(categoryId);
+            await CheckIfCategoryExistsAsync(categoryId);
 
             var product = await _repositoryManager.ProducRepository.GetProductAsync(categoryId, productId, trackChanges);
             if (product is null)

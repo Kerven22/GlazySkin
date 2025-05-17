@@ -1,5 +1,4 @@
-﻿using System.Xml.XPath;
-using AutoMapper;
+﻿using AutoMapper;
 using Entity.Models;
 using RepositoryContracts;
 using ServiceContracts;
@@ -8,29 +7,29 @@ using Shared;
 
 namespace Servicies
 {
-    public sealed class CategoryService(IRepositoryManager _repositoryManager, IMapper _mapper):ICategoryService
+    public sealed class CategoryService(IRepositoryManager _repositoryManager, IMapper _mapper) : ICategoryService
     {
         public async Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync(bool trackChanges)
         {
-                var categories = await _repositoryManager.CategoryRepository.GetAllCategoriesAsync(trackChanges);
-                var categoriesDto = _mapper.Map<IEnumerable<CategoryDto>>(categories);
-                return categoriesDto; 
+            var categories = await _repositoryManager.CategoryRepository.GetAllCategoriesAsync(trackChanges);
+            var categoriesDto = _mapper.Map<IEnumerable<CategoryDto>>(categories);
+            return categoriesDto;
         }
 
         public async Task<CategoryDto> CreateCategoryAsync(CategoryForCreationDto category)
         {
-            var categoryExists = _repositoryManager.CategoryRepository.CheckByNameCategoryExists(category.Name,trackChanges:false);
+            var categoryExists = _repositoryManager.CategoryRepository.CheckByNameCategoryExists(category.Name, trackChanges: false);
             if (categoryExists)
                 throw new CategoryExistException(category.Name);
-            
-            var categoryEntity = _mapper.Map<Category>(category); 
-            
+
+            var categoryEntity = _mapper.Map<Category>(category);
+
             _repositoryManager.CategoryRepository.CreateCategory(categoryEntity);
             await _repositoryManager.SaveAsync();
 
             var categoryDto = _mapper.Map<CategoryDto>(categoryEntity);
-            
-            return categoryDto; 
+
+            return categoryDto;
         }
 
         public async Task<CategoryDto> GetCategoryByIdAsync(Guid id, bool trackChanges)
@@ -40,19 +39,19 @@ namespace Servicies
                 throw new CategoryNotFoundException(id);
 
             var categoryDto = _mapper.Map<CategoryDto>(category);
-            return categoryDto; 
+            return categoryDto;
         }
 
         public async Task<IEnumerable<CategoryDto>> GetCategoriesByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)
         {
             if (ids is null)
                 throw new IdParametrsBadRequesException();
-            
+
             var categoriesEntities = await _repositoryManager.CategoryRepository.GetCategoryByIdsAsync(ids, trackChanges);
 
             if (ids.Count() != categoriesEntities.Count())
                 throw new CollectionByIdsBadRequestException();
-            
+
             var categoriesDto = _mapper.Map<IEnumerable<CategoryDto>>(categoriesEntities);
             return categoriesDto;
         }

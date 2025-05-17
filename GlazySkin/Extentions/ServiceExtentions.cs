@@ -13,7 +13,8 @@ namespace GlazySkin.Extentions
                 options.AddPolicy("CorsPolicy", builder =>
                 builder.AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .WithExposedHeaders("X-Pagination"));
             });
 
         public static void RepositoryManagerConfigure(this IServiceCollection services) =>

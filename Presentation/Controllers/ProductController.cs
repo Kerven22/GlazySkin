@@ -1,8 +1,10 @@
+using System.Text.Json;
 using GlazySkin.ActionFilter;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using ServiceContracts;
 using Shared;
+using Shared.RequestFeatures;
 
 namespace Presentation.Controllers;
 [ApiController]
@@ -10,10 +12,11 @@ namespace Presentation.Controllers;
 public class ProductController(IServiceManager _serviceManager):ControllerBase
 {
     [HttpGet("products")]
-    public async Task<IActionResult> GetProductsAsync(Guid categoryId)
+    public async Task<IActionResult> GetProductsAsync(Guid categoryId, [FromQuery] ProductParameters productParameters)
     {
-        var products = await _serviceManager.ProductService.GetProductsAsync(categoryId, trackChanges: false);
-        return Ok(products); 
+        var pagedList = await _serviceManager.ProductService.GetProductsAsync(categoryId, productParameters, trackChanges: false);
+        Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedList.metaData));
+        return Ok(pagedList.productDtos); 
     }
 
     [HttpGet("products/{productId:guid}", Name = "GetProduct")]

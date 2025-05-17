@@ -3,6 +3,7 @@ using Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using RepositoryContracts;
 using Shared;
+using Shared.RequestFeatures;
 
 namespace Repositories
 {
@@ -10,9 +11,18 @@ namespace Repositories
     {
         public ProductRepository(GlazySkinDbContext glazySkinDbContext) : base(glazySkinDbContext) { }
 
-        public async Task<IEnumerable<Product>> GetProductsAsync(Guid categoryId, bool trackChanges) =>
-            await FindByCondition(p => p.CategoryId.Equals(categoryId), trackChanges)
-                .OrderBy(p => p.Name).ToListAsync();
+        public async Task<PagedList<Product>> GetProductsAsync(Guid categoryId, ProductParameters productParameters,
+            bool trackChanges)
+        {
+            var products = await FindByCondition(p => p.CategoryId.Equals(categoryId), trackChanges)
+                .OrderBy(p => p.Name)
+                .Skip((productParameters.PageNumber-1)*productParameters.PageSize)
+                .Take(productParameters.PageSize)
+                .ToListAsync();
+
+            var count = await FindByCondition(p => p.CategoryId.Equals(categoryId), trackChanges).CountAsync(); 
+            return new PagedList<Product>(products, count, productParameters.PageNumber, productParameters.PageSize); 
+        }
 
         public async Task<Product> GetProductAsync(Guid categoryId, Guid productId, bool trackChanges) =>
             await FindByCondition(p => p.CategoryId.Equals(categoryId) && p.ProductId.Equals(productId), trackChanges)

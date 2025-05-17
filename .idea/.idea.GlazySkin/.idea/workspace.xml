@@ -10,30 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Presentation/ActionFilter/ValidationFilterAttrebute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/CategoryForUpdate.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/ProductForUpdateDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/RequestFeatures/MetaData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/RequestFeatures/PagedList.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/RequestFeatures/ProductParameters.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/RequestFeatures/RequestParameteres.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlazySkin/GlazySkin.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/GlazySkin.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlazySkin/Mapper/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Mapper/MappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlazySkin/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentation/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/CategoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlazySkin/Extentions/ServiceExtentions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Extentions/ServiceExtentions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/ProductController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentation/Presentation.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Presentation.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/CategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/CategoryRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repositories/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/ProductRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/RepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/RepositoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepositoryContracts/ICategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryContracts/ICategoryRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RepositoryContracts/IProducRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryContracts/IProducRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceContracts/ICategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/ICategoryService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servicies/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/CategoryService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servicies/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/CategoryDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/CategoryDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/CategoryForCreationDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/CategoryForCreationDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/ProductDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ProductDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/ProductForCreationDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ProductForCreationDto.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +42,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e3173b4f82be9a07b4366bcbf46161cc43f2bd9e494df2d923810e3c48/ControllerActionInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/918aa32966267955c2bcd6ecbee8af7ab7d84b7cb6cef6443c7b1cd33546d6e/AuthorizationMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -71,7 +60,7 @@
     &quot;.NET Launch Settings Profile.GlazySkin: https.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -157,6 +146,8 @@
       <workItem from="1747190548118" duration="2867000" />
       <workItem from="1747281372415" duration="2091000" />
       <workItem from="1747324158225" duration="1458000" />
+      <workItem from="1747326278041" duration="6607000" />
+      <workItem from="1747450830985" duration="3366000" />
     </task>
     <servers />
   </component>
