@@ -10,10 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Servicies/Exceptions/CostRangeBadRequestException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repositories/RepositoryExtentions/ReposiotryProductExtentions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repositories/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/ProductRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicies/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ProductService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/RequestFeatures/ProductParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/RequestFeatures/ProductParameters.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +139,7 @@
       <workItem from="1747324158225" duration="1458000" />
       <workItem from="1747326278041" duration="6607000" />
       <workItem from="1747450830985" duration="3366000" />
-      <workItem from="1747533140761" duration="3223000" />
+      <workItem from="1747533140761" duration="5931000" />
     </task>
     <servers />
   </component>

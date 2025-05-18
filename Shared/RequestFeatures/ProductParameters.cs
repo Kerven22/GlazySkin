@@ -6,4 +6,6 @@ public class ProductParameters:RequestParameteres
     public uint MaxCost { get; set; } = int.MaxValue;
 
     public bool ValidCostRange => MinCost < MaxCost; 
+    
+    public string? SearchTerm { get; set; }
 }
