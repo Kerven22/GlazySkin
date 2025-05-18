@@ -10,19 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Shared/RequestFeatures/MetaData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/RequestFeatures/PagedList.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/RequestFeatures/ProductParameters.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/RequestFeatures/RequestParameteres.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicies/Exceptions/CostRangeBadRequestException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin.Tests/CategoryServiceShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlazySkin/Extentions/ServiceExtentions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Extentions/ServiceExtentions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentation/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/Controllers/ProductController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repositories/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/ProductRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepositoryContracts/IProducRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryContracts/IProducRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicies/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/CategoryService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servicies/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/RequestFeatures/ProductParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/RequestFeatures/ProductParameters.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +140,7 @@
       <workItem from="1747324158225" duration="1458000" />
       <workItem from="1747326278041" duration="6607000" />
       <workItem from="1747450830985" duration="3366000" />
+      <workItem from="1747533140761" duration="3223000" />
     </task>
     <servers />
   </component>

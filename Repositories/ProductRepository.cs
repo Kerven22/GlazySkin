@@ -14,7 +14,8 @@ namespace Repositories
         public async Task<PagedList<Product>> GetProductsAsync(Guid categoryId, ProductParameters productParameters,
             bool trackChanges)
         {
-            var products = await FindByCondition(p => p.CategoryId.Equals(categoryId), trackChanges)
+            var products = await FindByCondition(p => p.CategoryId.Equals(categoryId)&&
+                                                      (p.Cost>=productParameters.MinCost&& p.Cost<=productParameters.MaxCost), trackChanges)
                 .OrderBy(p => p.Name)
                 .Skip((productParameters.PageNumber-1)*productParameters.PageSize)
                 .Take(productParameters.PageSize)

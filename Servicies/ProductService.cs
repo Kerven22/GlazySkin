@@ -18,6 +18,8 @@ namespace Servicies
         }
         public async Task<(IEnumerable<ProductDto> productDtos, MetaData metaData)> GetProductsAsync(Guid categoryId,ProductParameters productParameters, bool trackChanges)
         {
+            if (!productParameters.ValidCostRange)
+                throw new CostRangeBadRequestException();
             await CheckIfCategoryExistsAsync(categoryId);
             var produtcWithMetaData =
                 await _repositoryManager.ProducRepository.GetProductsAsync(categoryId, productParameters, trackChanges);
