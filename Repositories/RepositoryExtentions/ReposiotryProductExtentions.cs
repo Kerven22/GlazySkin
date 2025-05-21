@@ -1,4 +1,8 @@
+using System.Reflection;
+using System.Text;
+using System.Linq.Dynamic.Core;
 using Entity.Models;
+using Repositories.RepositoryExtentions.Utility;
 
 namespace Repositories.RepositoryExtentions;
 
@@ -13,5 +17,16 @@ public static class ReposiotryProductExtentions
             return products;
         var lowerCaseTerm = serachTerm.Trim().ToLower();
         return products.Where(p => p.Name.ToLower().Contains(serachTerm)); 
+    }
+
+    public static IQueryable<Product> Sorting(this IQueryable<Product> products, string orderByQueryString)
+    {
+        if (string.IsNullOrEmpty(orderByQueryString))
+            return products.OrderBy(p => p.Name);
+        var orderQuery = OrderQueryBuilder.CreateOrderQuery<Product>(orderByQueryString);
+        if (string.IsNullOrWhiteSpace(orderQuery))
+            return products.OrderBy(p => p.Name);
+
+        return products.OrderBy(orderQuery);
     }
 }

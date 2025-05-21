@@ -20,7 +20,7 @@ namespace Repositories
                 .Search(productParameters.SearchTerm)
                 .Skip((productParameters.PageNumber-1)*productParameters.PageSize)
                 .Take(productParameters.PageSize)
-                .OrderBy(p => p.Name)
+                .Sorting(productParameters.OrderBy)
                 .ToListAsync();
 
             var count = await FindByCondition(p => p.CategoryId.Equals(categoryId), trackChanges).CountAsync(); 
