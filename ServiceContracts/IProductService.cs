@@ -1,4 +1,5 @@
-﻿using Entity.Models;
+﻿using System.Dynamic;
+using Entity.Models;
 using Shared;
 using Shared.RequestFeatures;
 
@@ -6,7 +7,7 @@ namespace ServiceContracts
 {
     public interface IProductService
     {
-        Task<(IEnumerable<ProductDto> productDtos, MetaData metaData)> GetProductsAsync(Guid categoryId, ProductParameters productParameters, bool trackChanges);
+        Task<(IEnumerable<ExpandoObject> productDtos, MetaData metaData)> GetProductsAsync(Guid categoryId, ProductParameters productParameters, bool trackChanges);
 
         
         Task<ProductDto> GetProductAsync(Guid categoryId, Guid productId, bool trackChanges);

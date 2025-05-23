@@ -2,6 +2,7 @@ using System.Text.Json;
 using GlazySkin.ActionFilter;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using ServiceContracts;
 using Shared;
 using Shared.RequestFeatures;
@@ -16,6 +17,7 @@ public class ProductController(IServiceManager _serviceManager):ControllerBase
     {
         var pagedList = await _serviceManager.ProductService.GetProductsAsync(categoryId, productParameters, trackChanges: false);
         Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedList.metaData));
+        Log.Information("GetProductAsync"); 
         return Ok(pagedList.productDtos); 
     }
 

@@ -1,6 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Dynamic;
+using AutoMapper;
 using Entity.Models;
 using RepositoryContracts;
+using Serilog;
 using ServiceContracts;
 using Servicies.Exceptions;
 using Shared;
@@ -8,7 +10,7 @@ using Shared.RequestFeatures;
 
 namespace Servicies
 {
-    internal sealed class ProductService(IRepositoryManager _repositoryManager, IMapper _mapper):IProductService
+    internal sealed class ProductService(IRepositoryManager _repositoryManager, IMapper _mapper, IDataShaper<ProductDto> _dataShaper):IProductService
     {
         private async Task CheckIfCategoryExistsAsync(Guid categoryId)
         {
@@ -16,7 +18,7 @@ namespace Servicies
             if (category is null)
                 throw new CategoryNotFoundException(categoryId); 
         }
-        public async Task<(IEnumerable<ProductDto> productDtos, MetaData metaData)> GetProductsAsync(Guid categoryId,ProductParameters productParameters, bool trackChanges)
+        public async Task<(IEnumerable<ExpandoObject> productDtos, MetaData metaData)> GetProductsAsync(Guid categoryId,ProductParameters productParameters, bool trackChanges)
         {
             if (!productParameters.ValidCostRange)
                 throw new CostRangeBadRequestException();
@@ -24,7 +26,8 @@ namespace Servicies
             var produtcWithMetaData =
                 await _repositoryManager.ProducRepository.GetProductsAsync(categoryId, productParameters, trackChanges);
             var productDto = _mapper.Map<IEnumerable<ProductDto>>(produtcWithMetaData);
-            return (productDtos: productDto, metaData: produtcWithMetaData.MetaData); 
+            var shapedData = _dataShaper.ShapeData(productDto, productParameters.Fields);
+            return (productDtos: shapedData, metaData: produtcWithMetaData.MetaData); 
         }
 
         public async Task<ProductDto> GetProductAsync(Guid categoryId, Guid productId, bool trackChanges)

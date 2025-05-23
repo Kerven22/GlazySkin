@@ -1,6 +1,5 @@
 using System.Reflection;
 using System.Text;
-using Microsoft.Extensions.Primitives;
 
 namespace Repositories.RepositoryExtentions.Utility;
 
@@ -14,17 +13,17 @@ public static class OrderQueryBuilder
 
         foreach (var param in orderParams)
         {
-            if(string.IsNullOrWhiteSpace(param))
+            if (string.IsNullOrWhiteSpace(param))
                 continue;
             var propertyFromQuery = param.Split(" ")[0];
             var objectProperty = properyInfos.FirstOrDefault(p =>
                 p.Name.Equals(propertyFromQuery, StringComparison.InvariantCultureIgnoreCase));
-            if(objectProperty is null)
+            if (objectProperty is null)
                 continue;
 
             var direction = param.EndsWith("desc") ? "descending" : "ascending";
 
-            orderQueryBuilder.Append($"{objectProperty.Name.ToString()} {direction}, ");
+            orderQueryBuilder.Append($"{objectProperty.Name.ToString()} {direction},");
         }
         var orderQuery = orderQueryBuilder.ToString().TrimEnd(',');
         return orderQuery;

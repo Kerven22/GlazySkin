@@ -23,7 +23,9 @@ public static class ReposiotryProductExtentions
     {
         if (string.IsNullOrEmpty(orderByQueryString))
             return products.OrderBy(p => p.Name);
+
         var orderQuery = OrderQueryBuilder.CreateOrderQuery<Product>(orderByQueryString);
+
         if (string.IsNullOrWhiteSpace(orderQuery))
             return products.OrderBy(p => p.Name);
 

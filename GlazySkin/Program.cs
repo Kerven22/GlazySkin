@@ -5,7 +5,10 @@ using GlazySkin.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
+using RepositoryContracts;
 using Serilog;
+using Servicies.DataSaping;
+using Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
@@ -27,7 +30,8 @@ builder.Services.RepositoryManagerConfigure();
 builder.Services.ServiceManagerConfigure(); 
 builder.Services.AddDbContext<GlazySkinDbContext>();
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddScoped<ValidationFilterAttrebute>(); 
+builder.Services.AddScoped<ValidationFilterAttrebute>();
+builder.Services.AddScoped<IDataShaper<ProductDto>, DataShaper<ProductDto>>();
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
