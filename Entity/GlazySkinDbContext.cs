@@ -1,11 +1,12 @@
 ﻿using Entity.EntityConfigurations;
 using Entity.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Entity
 {
-    public class GlazySkinDbContext:DbContext
+    public class GlazySkinDbContext:IdentityDbContext<User>
     {
         private readonly IConfiguration _configuration;
 
@@ -32,7 +33,8 @@ namespace Entity
             modelBuilder.ApplyConfiguration(new BasketConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-            modelBuilder.ApplyConfiguration(new ProductConfiguration()); 
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration()); 
             base.OnModelCreating(modelBuilder);
         }
 

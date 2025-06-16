@@ -10,15 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcc13d9-4a5f-4c30-84f4-5ca984419ef0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RepositoryContracts/IDataShaper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicies/DataShaping/DataShaper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entity/EntityConfigurations/RoleConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlazySkin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Entity.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/EntityConfigurations/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/EntityConfigurations/UserConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/GlazySkinDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/GlazySkinDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Models/Baseket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Models/Baseket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Models/Comment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Models/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlazySkin/Extentions/ServiceExtentions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Extentions/ServiceExtentions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlazySkin/GlazySkin.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/GlazySkin.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlazySkin/Migrations/GlazySkinDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Migrations/GlazySkinDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlazySkin/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlazySkin/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceContracts/IProductService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servicies/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicies/ServiceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Servicies/ServiceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/RequestFeatures/RequestParameteres.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/RequestFeatures/RequestParameteres.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +40,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fe1971771878441fa85b64b1141948ee19c38/d6/697428b1/ModelBindingContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/117275599da316d4e45c62326f3097e45f8b5b17d8fe17bbcf9ca86b0819b16/ResourceInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/669142762fe6d3cf7d37f077c5a6cd58ee415a166197c9fb454faf1921fc6/String.Comparison.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d382df578ec93391918cfaa4ce7f4b8f35c9aed1241d6556dc9be26df13c/IdentityUser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e3173b4f82be9a07b4366bcbf46161cc43f2bd9e494df2d923810e3c48/ControllerActionInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/918aa32966267955c2bcd6ecbee8af7ab7d84b7cb6cef6443c7b1cd33546d6e/AuthorizationMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f9342fb513b7b524925c79d9822cd3ecaf072c50231aa3b469875f4c2cdf/IdentityDbContext.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -51,21 +57,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.GlazySkin: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.GlazySkin: https.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.GlazySkin: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.GlazySkin: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.GlazySkin: https">
     <configuration name="GlazySkin: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/GlazySkin/GlazySkin.csproj" />
@@ -150,6 +156,9 @@
       <workItem from="1747707415763" duration="3041000" />
       <workItem from="1747755529167" duration="1889000" />
       <workItem from="1747897270909" duration="20952000" />
+      <workItem from="1748192262484" duration="808000" />
+      <workItem from="1748978692818" duration="671000" />
+      <workItem from="1749440371617" duration="4064000" />
     </task>
     <servers />
   </component>

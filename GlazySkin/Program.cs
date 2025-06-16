@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using Entity;
 using GlazySkin.ActionFilter;
 using GlazySkin.Extentions;
@@ -32,6 +33,11 @@ builder.Services.AddDbContext<GlazySkinDbContext>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ValidationFilterAttrebute>();
 builder.Services.AddScoped<IDataShaper<ProductDto>, DataShaper<ProductDto>>();
+builder.Services.AddMemoryCache();
+builder.Services.ConfigureRateLimitingOptions();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAuthentication();
+builder.Services.ConfigurationIdentity(); 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
@@ -40,12 +46,13 @@ if (app.Environment.IsDevelopment())
 }
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
-
+app.UseAuthentication(); 
 app.UseAuthorization();
 
+app.UseIpRateLimiting();
 app.MapControllers();
 
-app.Run();
+app.Run(); 
 
 NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()=>
 new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()

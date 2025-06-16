@@ -8,10 +8,10 @@ namespace Entity.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(k => k.UserId);
+            builder.HasKey(k => k.Id);
             builder.HasOne(k => k.Basket)
                 .WithOne(k => k.User)
-                .HasForeignKey<Basket>(k => k.UserId); 
+                .HasForeignKey<Basket>(k => k.Id);
         }
     }
 }

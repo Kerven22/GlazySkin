@@ -1,14 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace Entity.Models
 {
-    public class User
+    public class User:IdentityUser
     {
-        [Key]
-        [Column("UserId")]
-        public Guid UserId { get; set; }
-
         public string Login { get; set; }
 
         public string PasswordHash { get; set; }

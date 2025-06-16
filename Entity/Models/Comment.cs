@@ -16,8 +16,8 @@ namespace Entity.Models
         [ForeignKey(nameof(ProductId))]
         public Product Product { get; set; }
 
-        public Guid UserId { get; set; }
-        [ForeignKey(nameof(UserId))]
+        public string Id { get; set; }
+        [ForeignKey(nameof(Id))]
         public User User { get; set; }
     }
 }

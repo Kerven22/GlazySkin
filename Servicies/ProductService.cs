@@ -2,7 +2,6 @@
 using AutoMapper;
 using Entity.Models;
 using RepositoryContracts;
-using Serilog;
 using ServiceContracts;
 using Servicies.Exceptions;
 using Shared;
