@@ -37,6 +37,7 @@ builder.Services.AddMemoryCache();
 builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddAuthentication();
+builder.Services.ConfigureJwt(builder.Configuration); 
 builder.Services.ConfigurationIdentity(); 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

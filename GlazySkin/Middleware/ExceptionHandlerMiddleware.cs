@@ -1,14 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Servicies.Exceptions;
 
 namespace GlazySkin.Middleware
 {
     public class ExceptionHandlerMiddleware(RequestDelegate _next)
     {
-        public async Task InvokeAsync(HttpContext httpContext,ILogger<ExceptionHandlerMiddleware> logger, ProblemDetailsFactory problemDetailsFactory)
+        public async Task InvokeAsync(HttpContext httpContext, ILogger<ExceptionHandlerMiddleware> logger, ProblemDetailsFactory problemDetailsFactory)
         {
             try
             {
@@ -16,25 +14,25 @@ namespace GlazySkin.Middleware
                 await _next.Invoke(httpContext);
 
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                logger.LogError(exception, 
+                logger.LogError(exception,
                     "Error has happened with {RequestPath}, " +
                     "the message is {ErrorMessage}", httpContext.Request.Path.Value, exception.Message);
                 var httpStatusCode = exception switch
                 {
-                    NotFoundException notFoundException=>notFoundException.ErrorCode switch
+                    NotFoundException notFoundException => notFoundException.ErrorCode switch
                     {
-                        ErrorCode.Gone=>StatusCodes.Status410Gone,
-                        _=>StatusCodes.Status500InternalServerError
+                        ErrorCode.Gone => StatusCodes.Status410Gone,
+                        _ => StatusCodes.Status500InternalServerError
                     },
-                    _=> StatusCodes.Status500InternalServerError
+                    _ => StatusCodes.Status500InternalServerError
                 };
                 ProblemDetails problemDetails;
                 switch (exception)
                 {
                     case NotFoundException notFoundException:
-                        problemDetails = problemDetailsFactory.CreateProblemDetails(httpContext, httpStatusCode, notFoundException.Message); 
+                        problemDetails = problemDetailsFactory.CreateProblemDetails(httpContext, httpStatusCode, notFoundException.Message);
                         logger.LogError(notFoundException, "Service Exception occured");
                         break;
                     default:
