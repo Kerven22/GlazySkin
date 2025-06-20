@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using ServiceContracts;
+using Servicies.Exceptions;
 using Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -15,7 +16,7 @@ namespace Servicies
 {
     public class AuthenticationService(
         IMapper _mapper,
-        IConfiguration configuration,
+        IConfiguration _configuration,
         UserManager<User> _userManager) : IAuthenticationService
     {
 
@@ -33,7 +34,7 @@ namespace Servicies
             return result;
         }
 
-        public async Task<TokenDto> CreateToken()
+        public async Task<TokenDto> CreateToken(bool populateExp)
         {
             var signingCredentials = GetSingnigCredentials();
 
@@ -41,7 +42,17 @@ namespace Servicies
 
             var tokenOptions = GenerateTokenOptions(signingCredentials, claims.Result);
 
-            return new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+            var refreshToken = GenerateRefreshToken();
+
+            _user.RefreshToken = refreshToken;
+
+            if (populateExp)
+                _user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
+
+            await _userManager.UpdateAsync(_user);
+
+            var accessToken = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+            return new TokenDto(accessToken, refreshToken); 
         }
 
         public async Task<bool> ValidateUser(UserForAuthenticationDto user)
@@ -82,7 +93,7 @@ namespace Servicies
 
         private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
         {
-            var jwtSettings = configuration.GetSection("JwtSettings");
+            var jwtSettings = _configuration.GetSection("JwtSettings");
             var tokenOptions = new JwtSecurityToken(
                 issuer: jwtSettings["Issuer"],
                 audience: jwtSettings["Audince"],
@@ -94,14 +105,52 @@ namespace Servicies
             return tokenOptions;
         }
 
+        private ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
+        {
+            var jwtSettings = _configuration.GetSection("JwtSettings");
+
+            var tokenValidationParametrs = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidateLifetime = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET"))),
+                ValidIssuer = jwtSettings[""],
+                ValidAudience = jwtSettings[""]
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken securityToken;
+            var principial = tokenHandler.ValidateToken(token, tokenValidationParametrs, out securityToken);
+
+            var jwtSecurityToken = securityToken as JwtSecurityToken;
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                throw new SecurityTokenException("Invalid token");
+
+            return principial; 
+        }
+
         private string GenerateRefreshToken()
         {
-            var randomNumber = new byte[32]; 
+            var randomNumber = new byte[32];
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(randomNumber);
                 return Convert.ToBase64String(randomNumber); 
             }
+        }
+
+        public async Task<TokenDto> RefreshToken(TokenDto tokenDto)
+        {
+            var principal = GetPrincipalFromExpiredToken(tokenDto.AccesToken);
+
+            var user = _userManager.FindByNameAsync(principal.Identity.Name);
+
+            if (user == null || user.Result.RefreshToken != tokenDto.RefreshToken || user.Result.RefreshTokenExpiryTime <= DateTime.Now)
+                throw new RefreshTokenBadRequest();
+            _user = user.Result;
+            return await CreateToken(populateExp: false); 
         }
     }
 }
