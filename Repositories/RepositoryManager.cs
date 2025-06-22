@@ -1,4 +1,6 @@
 ﻿using Entity;
+using Entity.Models;
+using Microsoft.AspNetCore.Identity;
 using RepositoryContracts;
 
 namespace Repositories
@@ -11,10 +13,10 @@ namespace Repositories
         private readonly Lazy<IProducRepository> _productRepository;
         private readonly Lazy<IBasketRepository> _basketRepository;
 
-        public RepositoryManager(GlazySkinDbContext glazySkinDbContext)
+        public RepositoryManager(GlazySkinDbContext glazySkinDbContext, UserManager<User> userManager)
         {
             _dbContext = glazySkinDbContext;
-            _userRepository = new Lazy<IUserRepository>(() => new UserRepository(_dbContext));
+            _userRepository = new Lazy<IUserRepository>(() => new UserRepository(_dbContext, userManager));
             _categoryRepository = new Lazy<ICategoryRepository>(() => new CategoryRepository(_dbContext));
             _productRepository = new Lazy<IProducRepository>(() => new ProductRepository(_dbContext));
             _basketRepository = new Lazy<IBasketRepository>(() => new BasketRepository(_dbContext));

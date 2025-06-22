@@ -8,7 +8,7 @@ namespace Entity.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Basket> builder)
         {
-            builder.HasKey(k => k.BasketId);
+            builder.HasKey(b => b.BasketId);
             builder.HasOne(k => k.User)
                 .WithOne(k => k.Basket);
                 

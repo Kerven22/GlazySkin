@@ -24,22 +24,18 @@ namespace GlazySkin.Migrations
 
             modelBuilder.Entity("Entity.Models.Basket", b =>
                 {
-                    b.Property<Guid>("BasketId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<string>("BasketId")
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("BasketId");
 
                     b.Property<string>("Id")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("BasketId");
-
-                    b.HasIndex("Id")
-                        .IsUnique();
 
                     b.ToTable("Baskets");
                 });
@@ -100,8 +96,8 @@ namespace GlazySkin.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ProductId");
 
-                    b.Property<Guid?>("BasketId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("BasketId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
@@ -135,6 +131,10 @@ namespace GlazySkin.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("BasketId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -193,6 +193,9 @@ namespace GlazySkin.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BasketId")
+                        .IsUnique();
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -233,13 +236,13 @@ namespace GlazySkin.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5feb91b9-4812-4ab4-9a8f-4af1666493d3",
+                            Id = "5f724b48-f45d-4b33-81da-26a841880bc0",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "7cf9aa52-f4bb-4b48-8c9b-1b761982bbb1",
+                            Id = "09fb649e-b175-4c11-818a-e74cc75ccf89",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -351,17 +354,6 @@ namespace GlazySkin.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Entity.Models.Basket", b =>
-                {
-                    b.HasOne("Entity.Models.User", "User")
-                        .WithOne("Basket")
-                        .HasForeignKey("Entity.Models.Basket", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Entity.Models.Comment", b =>
                 {
                     b.HasOne("Entity.Models.User", "User")
@@ -394,6 +386,17 @@ namespace GlazySkin.Migrations
                         .IsRequired();
 
                     b.Navigation("Cagetgory");
+                });
+
+            modelBuilder.Entity("Entity.Models.User", b =>
+                {
+                    b.HasOne("Entity.Models.Basket", "Basket")
+                        .WithOne("User")
+                        .HasForeignKey("Entity.Models.User", "BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -450,6 +453,9 @@ namespace GlazySkin.Migrations
             modelBuilder.Entity("Entity.Models.Basket", b =>
                 {
                     b.Navigation("Products");
+
+                    b.Navigation("User")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entity.Models.Category", b =>
@@ -464,9 +470,6 @@ namespace GlazySkin.Migrations
 
             modelBuilder.Entity("Entity.Models.User", b =>
                 {
-                    b.Navigation("Basket")
-                        .IsRequired();
-
                     b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618

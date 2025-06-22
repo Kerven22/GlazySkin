@@ -3,6 +3,7 @@ using Entity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using RepositoryContracts;
 using Serilog;
 using ServiceContracts;
 using Servicies.Exceptions;
@@ -17,7 +18,8 @@ namespace Servicies
     public class AuthenticationService(
         IMapper _mapper,
         IConfiguration _configuration,
-        UserManager<User> _userManager) : IAuthenticationService
+        UserManager<User> _userManager, 
+        IRepositoryManager _repositoryManager) : IAuthenticationService
     {
 
         private User? _user;
@@ -25,11 +27,18 @@ namespace Servicies
         public async Task<IdentityResult> RegisterUser(UserForRegistrationDto registrationDto)
         {
             var user = _mapper.Map<User>(registrationDto);
+            var baseketId = Guid.NewGuid().ToString(); 
 
+            var basket = await _repositoryManager.BasketRepository.CreateBasket(user.Id, baseketId);
+
+            user.BasketId = basket.BasketId;
             var result = await _userManager.CreateAsync(user, registrationDto.Password);
 
-            if (result.Succeeded)
+            if (result.Succeeded)  
+            {
                 await _userManager.AddToRolesAsync(user, registrationDto.Roles);
+                await _repositoryManager.SaveAsync();
+            }
 
             return result;
         }
@@ -116,8 +125,8 @@ namespace Servicies
                 ValidateIssuerSigningKey = true,
                 ValidateLifetime = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET"))),
-                ValidIssuer = jwtSettings[""],
-                ValidAudience = jwtSettings[""]
+                ValidIssuer = jwtSettings["Issuer"],
+                ValidAudience = jwtSettings["Audince"]
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();

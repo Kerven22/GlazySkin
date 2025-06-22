@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Identity;
 
 namespace Entity.Models
 {
-    public class User:IdentityUser
+    public class User : IdentityUser
     {
+
+        //public string Id { get; set; }
         public string Login { get; set; }
 
         //public string PasswordHash { get; set; }
@@ -17,6 +18,8 @@ namespace Entity.Models
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
 
+        public string BasketId { get; set; }
+        [ForeignKey(nameof(BasketId))]
         public Basket Basket { get; set; }
 
         [InverseProperty(nameof(Comment.User))]

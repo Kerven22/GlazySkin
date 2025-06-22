@@ -30,7 +30,7 @@ namespace Servicies
             _productService = new Lazy<IProductService>(() => new ProductService(_repositoryManager, _mapper, dataShaper));
             _basketService = new Lazy<IBasketService>(() => new BasketService(_repositoryManager));
             _authenticationService = new Lazy<IAuthenticationService>(() => 
-                    new AuthenticationService(_mapper, configuration, userManager));
+                    new AuthenticationService(_mapper, configuration, userManager, _repositoryManager));
         }
 
         public IUserService UserService => _userService.Value;

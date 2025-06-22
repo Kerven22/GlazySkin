@@ -6,11 +6,15 @@ using Microsoft.Extensions.Configuration;
 
 namespace Entity
 {
-    public class GlazySkinDbContext:IdentityDbContext<User>
+    public class GlazySkinDbContext : IdentityDbContext<User>
     {
         private readonly IConfiguration _configuration;
 
-        public GlazySkinDbContext(IConfiguration configguration) => _configuration = configguration; 
+        public GlazySkinDbContext(IConfiguration configguration)
+        {
+            _configuration = configguration;
+        }
+
 
 
         public DbSet<User> Users { get; set; }
@@ -25,7 +29,7 @@ namespace Entity
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("default"), b=>b.MigrationsAssembly("GlazySkin")); 
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("default"), b => b.MigrationsAssembly("GlazySkin"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,7 +38,7 @@ namespace Entity
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
-            modelBuilder.ApplyConfiguration(new RoleConfiguration()); 
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 

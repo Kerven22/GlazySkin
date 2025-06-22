@@ -11,7 +11,7 @@ namespace Entity.EntityConfigurations
             builder.HasKey(k => k.Id);
             builder.HasOne(k => k.Basket)
                 .WithOne(k => k.User)
-                .HasForeignKey<Basket>(k => k.Id);
+                .HasForeignKey<User>(k => k.BasketId);
         }
     }
 }

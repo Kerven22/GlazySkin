@@ -7,14 +7,14 @@ namespace Entity.Models
     {
         [Key]
         [Column("BasketId")]
-        public Guid BasketId { get; set; }
+        public string BasketId { get; set; }
 
         public string Id { get; set; }
-
+        [ForeignKey(nameof(Id))]
         public User User { get; set; }
 
-        public int? Quantity { get; set; } //количество товара в корзине
+        public int? Quantity { get; set; } = 0;//количество товара в корзине
 
-        public ICollection<Product>? Products { get; set; }
+        public List<Product>? Products { get; set; }
     }
 }
